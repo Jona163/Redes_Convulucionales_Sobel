@@ -120,3 +120,13 @@ def mostrar_resultados_variaciones(imagen, variaciones, titulos):
     plt.tight_layout()
     plt.show()
 
+# Cargar imagen
+ruta_imagen = 'chems.jpeg'  # Cambia por la ruta de tu imagen
+imagen = cv2.imread(ruta_imagen, cv2.IMREAD_GRAYSCALE)  # Cargar en escala de grises
+
+# Aplicar variaciones de Sobel
+variaciones, titulos = aplicar_variaciones_sobel(imagen)
+
+# Mostrar los resultados con la visualización mejorada
+mostrar_resultados_variaciones(imagen, variaciones, titulos)
+
