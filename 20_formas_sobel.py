@@ -21,8 +21,8 @@ def aplicar_variaciones_sobel(imagen):
         sobel_y = cv2.Sobel(imagen, cv2.CV_64F, 0, 1, ksize=ksize)
         variaciones.append(sobel_y)
         titulos.append(f'Sobel Y - Kernel {ksize}')
-
-     # 2. Variaciones en el orden de la derivada
+    
+    # 2. Variaciones en el orden de la derivada
     sobel_x_2nd_order = cv2.Sobel(imagen, cv2.CV_64F, 2, 0, ksize=3)
     variaciones.append(sobel_x_2nd_order)
     titulos.append('Sobel X - 2nd Order')
@@ -85,11 +85,16 @@ def aplicar_variaciones_sobel(imagen):
     variaciones.append(sobel_laplaciano)
     titulos.append('Sobel X - Laplaciano')
 
-# 9. Sobel en combinación con orden de derivadas
+    # 9. Sobel en combinación con orden de derivadas
     sobel_x_y = cv2.Sobel(imagen, cv2.CV_64F, 1, 1, ksize=3)
     variaciones.append(sobel_x_y)
     titulos.append('Sobel X e Y combinados')
 
+    sobel_y_x = cv2.Sobel(imagen, cv2.CV_64F, 1, 2, ksize=3)
+    variaciones.append(sobel_y_x)
+    titulos.append('Sobel X - Y segunda derivada')
+
+    return variaciones, titulos
 
 def mostrar_resultados_variaciones(imagen, variaciones, titulos):
     """
@@ -105,11 +110,6 @@ def mostrar_resultados_variaciones(imagen, variaciones, titulos):
     ax0.set_title('Imagen Original', fontsize=12, weight='bold', color='navy', backgroundcolor='lightyellow', pad=10)
     ax0.axis('off')
 
-    sobel_y_x = cv2.Sobel(imagen, cv2.CV_64F, 1, 2, ksize=3)
-    variaciones.append(sobel_y_x)
-    titulos.append('Sobel X - Y segunda derivada')
-
-    return variaciones, titulos
     # Mostrar todas las variaciones de Sobel
     for i, (var, titulo) in enumerate(zip(variaciones, titulos), 1):
         ax = plt.subplot(gs[i])
@@ -129,4 +129,3 @@ variaciones, titulos = aplicar_variaciones_sobel(imagen)
 
 # Mostrar los resultados con la visualización mejorada
 mostrar_resultados_variaciones(imagen, variaciones, titulos)
-
