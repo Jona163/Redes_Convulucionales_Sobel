@@ -30,3 +30,13 @@ def aplicar_variaciones_sobel(imagen):
     sobel_y_2nd_order = cv2.Sobel(imagen, cv2.CV_64F, 0, 2, ksize=3)
     variaciones.append(sobel_y_2nd_order)
     titulos.append('Sobel Y - 2nd Order')
+
+    # 3. Diferentes combinaciones de Sobel X e Y
+    sobel_combined_1 = cv2.addWeighted(sobel_x, 1, sobel_y, 1, 0)
+    variaciones.append(sobel_combined_1)
+    titulos.append('Sobel X + Sobel Y (1:1)')
+
+    sobel_combined_2 = cv2.addWeighted(sobel_x, 0.5, sobel_y, 1.5, 0)
+    variaciones.append(sobel_combined_2)
+    titulos.append('Sobel X + Sobel Y (0.5:1.5)')
+    
