@@ -48,3 +48,12 @@ def aplicar_variaciones_sobel(imagen):
     sobel_border_reflect = cv2.Sobel(imagen, cv2.CV_64F, 1, 0, ksize=3, borderType=cv2.BORDER_REFLECT)
     variaciones.append(sobel_border_reflect)
     titulos.append('Sobel X - Border Reflect')
+
+    # 5. Diferentes profundidades de imagen
+    sobel_x_16s = cv2.Sobel(imagen, cv2.CV_16S, 1, 0, ksize=3)
+    variaciones.append(sobel_x_16s)
+    titulos.append('Sobel X - CV_16S')
+
+    sobel_x_8u = cv2.Sobel(imagen, cv2.CV_8U, 1, 0, ksize=3)
+    variaciones.append(sobel_x_8u)
+    titulos.append('Sobel X - CV_8U')
