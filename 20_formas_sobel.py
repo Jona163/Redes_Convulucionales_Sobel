@@ -39,4 +39,12 @@ def aplicar_variaciones_sobel(imagen):
     sobel_combined_2 = cv2.addWeighted(sobel_x, 0.5, sobel_y, 1.5, 0)
     variaciones.append(sobel_combined_2)
     titulos.append('Sobel X + Sobel Y (0.5:1.5)')
-    
+
+    # 4. Métodos de borde diferentes
+    sobel_border_default = cv2.Sobel(imagen, cv2.CV_64F, 1, 0, ksize=3, borderType=cv2.BORDER_DEFAULT)
+    variaciones.append(sobel_border_default)
+    titulos.append('Sobel X - Border Default')
+
+    sobel_border_reflect = cv2.Sobel(imagen, cv2.CV_64F, 1, 0, ksize=3, borderType=cv2.BORDER_REFLECT)
+    variaciones.append(sobel_border_reflect)
+    titulos.append('Sobel X - Border Reflect')
