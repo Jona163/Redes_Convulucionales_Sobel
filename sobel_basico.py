@@ -115,7 +115,6 @@ def guardar_resultado(matriz, ruta_salida):
     np.savetxt(ruta_salida, matriz, fmt='%d')  # Guardar la matriz en un archivo de texto
     print(f"Matriz guardada en: {ruta_salida}")
 
-
 def analisis_imagen_sobel(ruta_imagen, ruta_salida=None):
     """
     Ejecuta todo el pipeline de procesamiento de imagen con el filtro de Sobel.
