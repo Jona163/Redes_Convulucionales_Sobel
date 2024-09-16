@@ -104,7 +104,7 @@ def mostrar_resultados(imagen, sobel_x, sobel_y, magnitud, fase):
     plt.tight_layout()  # Ajusta el espacio entre las subplots
     plt.show()  # Muestra todas las imágenes en una ventana
 
-ef guardar_resultado(matriz, ruta_salida):
+def guardar_resultado(matriz, ruta_salida):
     """
     Guarda la matriz de la imagen procesada (magnitud del gradiente) en un archivo de texto.
     
