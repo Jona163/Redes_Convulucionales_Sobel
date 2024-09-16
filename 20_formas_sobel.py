@@ -84,3 +84,14 @@ def aplicar_variaciones_sobel(imagen):
     sobel_laplaciano = cv2.Sobel(laplaciano, cv2.CV_64F, 1, 0, ksize=3)
     variaciones.append(sobel_laplaciano)
     titulos.append('Sobel X - Laplaciano')
+
+# 9. Sobel en combinación con orden de derivadas
+    sobel_x_y = cv2.Sobel(imagen, cv2.CV_64F, 1, 1, ksize=3)
+    variaciones.append(sobel_x_y)
+    titulos.append('Sobel X e Y combinados')
+
+    sobel_y_x = cv2.Sobel(imagen, cv2.CV_64F, 1, 2, ksize=3)
+    variaciones.append(sobel_y_x)
+    titulos.append('Sobel X - Y segunda derivada')
+
+    return variaciones, titulos
