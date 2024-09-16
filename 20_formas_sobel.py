@@ -72,3 +72,15 @@ def aplicar_variaciones_sobel(imagen):
 
         variaciones.append(sobel_b)
         titulos.append('Sobel B - Canal Azul')
+
+    # 7. Aplicar Sobel tras suavizado con filtro Gaussiano
+    imagen_suavizada = cv2.GaussianBlur(imagen, (3, 3), 0)
+    sobel_suavizado = cv2.Sobel(imagen_suavizada, cv2.CV_64F, 1, 0, ksize=3)
+    variaciones.append(sobel_suavizado)
+    titulos.append('Sobel X - Imagen Suavizada')
+
+    # 8. Sobel aplicado después de un filtro Laplaciano
+    laplaciano = cv2.Laplacian(imagen, cv2.CV_64F)
+    sobel_laplaciano = cv2.Sobel(laplaciano, cv2.CV_64F, 1, 0, ksize=3)
+    variaciones.append(sobel_laplaciano)
+    titulos.append('Sobel X - Laplaciano')
