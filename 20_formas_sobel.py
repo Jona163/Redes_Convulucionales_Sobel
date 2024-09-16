@@ -110,3 +110,13 @@ def mostrar_resultados_variaciones(imagen, variaciones, titulos):
     titulos.append('Sobel X - Y segunda derivada')
 
     return variaciones, titulos
+    # Mostrar todas las variaciones de Sobel
+    for i, (var, titulo) in enumerate(zip(variaciones, titulos), 1):
+        ax = plt.subplot(gs[i])
+        ax.imshow(var, cmap='gray')
+        ax.set_title(titulo, fontsize=10, color='darkred', weight='bold', backgroundcolor='lightyellow', pad=10)
+        ax.axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
