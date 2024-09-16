@@ -90,6 +90,21 @@ def aplicar_variaciones_sobel(imagen):
     variaciones.append(sobel_x_y)
     titulos.append('Sobel X e Y combinados')
 
+
+def mostrar_resultados_variaciones(imagen, variaciones, titulos):
+    """
+    Muestra la imagen original junto con los resultados de las variaciones del filtro Sobel
+    en una cuadrícula de 5x4. Mejorada estéticamente.
+    """
+    plt.figure(figsize=(16, 22))  # Tamaño de la figura
+    gs = gridspec.GridSpec(5, 4, wspace=0.5, hspace=0.5)  # Espacio entre las subplots
+
+    # Mostrar la imagen original
+    ax0 = plt.subplot(gs[0])
+    ax0.imshow(imagen, cmap='gray')
+    ax0.set_title('Imagen Original', fontsize=12, weight='bold', color='navy', backgroundcolor='lightyellow', pad=10)
+    ax0.axis('off')
+
     sobel_y_x = cv2.Sobel(imagen, cv2.CV_64F, 1, 2, ksize=3)
     variaciones.append(sobel_y_x)
     titulos.append('Sobel X - Y segunda derivada')
