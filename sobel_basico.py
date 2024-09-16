@@ -114,3 +114,35 @@ ef guardar_resultado(matriz, ruta_salida):
     """
     np.savetxt(ruta_salida, matriz, fmt='%d')  # Guardar la matriz en un archivo de texto
     print(f"Matriz guardada en: {ruta_salida}")
+
+
+def analisis_imagen_sobel(ruta_imagen, ruta_salida=None):
+    """
+    Ejecuta todo el pipeline de procesamiento de imagen con el filtro de Sobel.
+    Incluye la carga de imagen, la aplicación del filtro y la visualización de resultados.
+    
+    Parámetros:
+    - ruta_imagen (str): Ruta de la imagen a procesar.
+    - ruta_salida (str, opcional): Ruta donde se guardará la matriz de la magnitud del gradiente (si se proporciona).
+    """
+    try:
+        # 1. Cargar la imagen
+        imagen = cargar_imagen(ruta_imagen)
+        
+        # 2. Aplicar el filtro Sobel
+        sobel_x, sobel_y, magnitud, fase = aplicar_sobel(imagen)
+        
+        # 3. Mostrar los resultados
+        mostrar_resultados(imagen, sobel_x, sobel_y, magnitud, fase)
+        
+        # 4. Guardar la matriz de la magnitud del gradiente si se proporciona una ruta de salida
+        if ruta_salida:
+            guardar_resultado(magnitud, ruta_salida)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Ejemplo de uso
+ruta_imagen = 'chems.jpeg'  # ruta de tu imagen
+ruta_salida = 'resultado_sobel.txt'  # guardar la matriz
+analisis_imagen_sobel(ruta_imagen, ruta_salida)
