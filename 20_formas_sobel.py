@@ -57,3 +57,18 @@ def aplicar_variaciones_sobel(imagen):
     sobel_x_8u = cv2.Sobel(imagen, cv2.CV_8U, 1, 0, ksize=3)
     variaciones.append(sobel_x_8u)
     titulos.append('Sobel X - CV_8U')
+
+    # 6. Aplicar Sobel en cada canal de color (si la imagen tiene más de 1 canal)
+    if len(imagen.shape) == 3:  # Imagen a color
+        sobel_r = cv2.Sobel(imagen[:,:,0], cv2.CV_64F, 1, 0, ksize=3)
+        sobel_g = cv2.Sobel(imagen[:,:,1], cv2.CV_64F, 1, 0, ksize=3)
+        sobel_b = cv2.Sobel(imagen[:,:,2], cv2.CV_64F, 1, 0, ksize=3)
+
+        variaciones.append(sobel_r)
+        titulos.append('Sobel R - Canal Rojo')
+
+        variaciones.append(sobel_g)
+        titulos.append('Sobel G - Canal Verde')
+
+        variaciones.append(sobel_b)
+        titulos.append('Sobel B - Canal Azul')
